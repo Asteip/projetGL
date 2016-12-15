@@ -18,6 +18,17 @@ class Departement{
 		
 	}
 	
+	public void validerDemande(Demande demande){
+		
+	}
+	
+	public void affecterEnseignements(Enseignant ens){
+		
+	}
+	
+	public void ImposeInterventionDepartement(){
+		
+	}
 	
 	
 	
@@ -36,6 +47,18 @@ class Departement{
 	
 	public void setParcours(ArrayList<Parcours> parcours){
 		this.parcours = parcours;
+	}
+	
+	public ArrayList<Parcours> getParcours(){
+		return this.parcours;
+	}
+	
+	public void setEnseignants(ArrayList<Parcours> parcours){
+		this.parcours = parcours;
+	}
+	
+	public ArrayList<Parcours> getEnseignants(){
+		return this.parcours;
 	}
 	
 	
