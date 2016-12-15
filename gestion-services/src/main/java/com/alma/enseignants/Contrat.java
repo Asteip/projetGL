@@ -1,5 +1,6 @@
 package com.alma.enseignants;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Contrat {
@@ -10,8 +11,15 @@ public class Contrat {
 	public Contrat(int min, int max){
 		this.min = min;
 		this.max = max;
+		this.enseignants = new ArrayList<Enseignant>();
 	}
 
+	public void addEnseignant(Enseignant e){
+		this.enseignants.add(e);
+	}
+	public void removeEnseignant(Enseignant e){
+		this.enseignants.remove(e);
+	}
 	
 	//--- getters and setters ---
 	public int getMin() {
