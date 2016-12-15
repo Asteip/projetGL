@@ -2,6 +2,8 @@ package com.alma.enseignants;
 
 import java.util.ArrayList;
 
+import com.alma.departements.Departement;
+
 public class Enseignant {
 
 	private String nom;

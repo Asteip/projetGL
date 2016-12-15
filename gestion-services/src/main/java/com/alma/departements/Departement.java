@@ -3,7 +3,7 @@ package com.alma.departements;
 import com.alma.enseignants.*;
 import java.util.ArrayList;
 
-class Departement{
+public class Departement{
 	private String nom;
 	private ArrayList<Parcours> parcours;
 	private ArrayList<Enseignant> enseignants;
