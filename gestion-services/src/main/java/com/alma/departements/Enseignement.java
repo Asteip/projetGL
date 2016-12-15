@@ -33,11 +33,16 @@ public class Enseignement{
 		return this.module;
 	}
 	
+	public int getTypeEnseignement() {
+		return this.typeEnseignement;
+		
+	}
+	
 	/**
 	 * Retourne le type d'enseignement.
 	 * @return La chaîne de caractère correspondant à l'attribut typeEnseignement soit : CM / TD / TP.
 	 */
-	public String getTypeEnseignement() {
+	public String getTypeEnseignementStr() {
 		String ret = "";
 		
 		// Une exception est levée si le type d'enseignement est inconnu.
