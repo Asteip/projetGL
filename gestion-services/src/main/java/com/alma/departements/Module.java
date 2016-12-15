@@ -1,0 +1,6 @@
+package departements;
+
+class Module{
+	
+	
+}
