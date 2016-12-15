@@ -2,20 +2,20 @@ package com.alma.enseignants;
 
 public abstract class Intervention {
 	
-	private String volume;
+	private int volume;
 	private Service service;
 	
-	public Intervention (String volume, Service service){
+	public Intervention (int volume, Service service){
 		this.volume = volume;
 		this.service = service;
 	}
 
 	
 	//--- getters and setters ---
-	public String getVolume() {
+	public int getVolume() {
 		return volume;
 	}
-	public void setVolume(String volume) {
+	public void setVolume(int volume) {
 		this.volume = volume;
 	}
 
