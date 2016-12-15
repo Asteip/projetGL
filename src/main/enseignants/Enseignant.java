@@ -1,4 +1,4 @@
-package Metier;
+package enseignants;
 public class Enseignant {
 
 	private String nom;
