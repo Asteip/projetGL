@@ -45,5 +45,8 @@
   <properties>
   	<mvn.spring.version>3.1.0.RELEASE</mvn.spring.version>
   	<mvn.project.build.sourceEncoding>UTF-8</mvn.project.build.sourceEncoding>
+  	<mvn.main.class>com.alma.Main</mvn.main.class>
+  	<mvn.log4j.rootCategory>WARN</mvn.log4j.rootCategory>
+  	<mvn.log4j.category.org.springframework.beans.factory>WARN</mvn.log4j.category.org.springframework.beans.factory>
   </properties>
 </project>
