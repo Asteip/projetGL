@@ -1,6 +1,6 @@
-package departements;
+package com.alma.departements;
 
-import enseignants;
+import com.alma.enseignants.*;
 import java.util.ArrayList;
 
 class Departement{
@@ -8,13 +8,17 @@ class Departement{
 	private ArrayList<Parcours> parcours;
 	private ArrayList<Enseignant> enseignants;
 	
-	public Departement(){
-		
+	public Departement(String nom){
+		this.nom = nom;
+		this.parcours = new ArrayList<Parcours>();
+		this.enseignants = new ArrayList<Enseignant>();
 	}
 	
 	public void consulterDemande(){
 		
 	}
+	
+	
 	
 	
 	
@@ -29,4 +33,10 @@ class Departement{
 	public String getNom(){
 		return this.nom;
 	}
+	
+	public void setParcours(ArrayList<Parcours> parcours){
+		this.parcours = parcours;
+	}
+	
+	
 }

@@ -1,4 +1,4 @@
-package departements;
+package com.alma.departements;
 
 class Module{
 	
