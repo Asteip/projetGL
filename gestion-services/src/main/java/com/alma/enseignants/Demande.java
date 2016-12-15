@@ -1,4 +1,4 @@
-package enseignants;
+package com.alma.enseignants;
 public abstract class Demande {
 
 	private boolean publiee;

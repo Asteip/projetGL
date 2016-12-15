@@ -1,11 +1,14 @@
-package enseignants;
+package com.alma.enseignants;
+
+import java.util.ArrayList;
+
 public class Enseignant {
 
 	private String nom;
 	private String prenom;
 	private String status;
-	private List<Demande> souhaits;
-	private List<Service> services;
+	private ArrayList<Demande> souhaits;
+	private ArrayList<Service> services;
 	private Departement departement;
 	private Contrat contrat;
 	private long id;
