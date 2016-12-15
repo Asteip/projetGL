@@ -1,5 +1,5 @@
 package com.alma.departements;
 
-class Parcours{
+public class Parcours{
 	
 }

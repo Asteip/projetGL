@@ -1,6 +1,6 @@
 package com.alma.departements;
 
-class Module{
+public class Module{
 	
 	
 }
