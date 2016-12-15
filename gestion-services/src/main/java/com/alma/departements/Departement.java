@@ -22,18 +22,15 @@ class Departement{
 		
 	}
 	
-	public void affecterEnseignements(Enseignant ens){
+	public void affecterEnseignements(Demande demande){
 		
 	}
 	
-	public void ImposeInterventionDepartement(){
+	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e){
 		
 	}
 	
-	
-	
-	
-	
+		
 	
 	// ACCESSEURS
 	
