@@ -1,5 +1,6 @@
 package com.alma.enseignants;
-import com.alma.departements.*;
+
+import com.alma.departements.Enseignement;
 
 public class Voeu extends Demande{
 
@@ -13,7 +14,7 @@ public class Voeu extends Demande{
 	}
 
 	
-	//getters and setters
+	//--- getters and setters ---
 	public int getPreference() {
 		return preference;
 	}

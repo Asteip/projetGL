@@ -1,6 +1,6 @@
 package com.alma.departements;
 
-class Enseignement{
+public class Enseignement{
 	
 	
 }
