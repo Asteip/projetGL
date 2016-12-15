@@ -59,6 +59,20 @@ public class Enseignant {
 		 */
 		return d;
 	}
+	
+	public List<Demande> consulterSouhait(int annee){
+		List<Demande> d = new ArrayList<Demande>();
+		/*
+		 * Pour toutes les demandes {
+		 * if (demande.getAnnee() == annee){
+		 * 	d.add(demande);
+		 * }
+		 * }
+		 * return d;
+		 * 
+		 */
+		return d;
+	}
 
 	public List<Enseignement> getEnseignements(){
 		List<Enseignement> e = new ArrayList<Enseignement>();
