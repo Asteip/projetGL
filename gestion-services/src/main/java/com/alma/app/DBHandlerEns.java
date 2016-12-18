@@ -1,4 +1,4 @@
-package com.alma.enseignants;
+package com.alma.app;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 public final class DBHandlerEns {
 
@@ -51,7 +53,7 @@ public final class DBHandlerEns {
 	public void openDB(){
 		try {
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:../persistanceDpt/db_departement.sqlite");
+			c = DriverManager.getConnection("jdbc:sqlite:../persistanceEns/db_enseignant.sqllite");
 			c.setAutoCommit(false);
 			logger.info("Opened database successfully");
 		} catch ( Exception e ) {
@@ -72,22 +74,21 @@ public final class DBHandlerEns {
 	}
 
 
-
-  //exemple avec un produit
   //create
 	/**
-	 * Create a product and save it in the database
-	 * @param name
+	 * Creer un souhait et le sauvegarde dans la base de donnée
+	 
+	 * @param mod
 	 * @param description
 	 * @param price
 	 * @param id
 	 */
-	public void create(String name, String description, Float price, int id, int nbStock){
+	public void create(int id, Module mod, Enseignement e, int volumeHoraire, int priorite){
 		try {
 			stmt = c.createStatement();
-			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');";
+			String sql = "INSERT INTO SOUHAIT (ID,MODULE,ENSEIGNEMENT,VOLUMEHORAIRE,PRIORITE) "+"VALUES ('"+id+"', '"+mod+"', "+e+", '"+volumeHoraire+"', '"+priorite+"');";
 			stmt.executeUpdate(sql);
-			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '"+nbStock+"');";
+			sql = "INSERT INTO LISTSOUHAIT (ID,NB_PROD) "+"VALUES ('"+id+"');";
 			stmt.executeUpdate(sql);
 		} catch ( Exception e ) {
 			logger.warn(e);

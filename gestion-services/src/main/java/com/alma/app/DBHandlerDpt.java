@@ -1,6 +1,7 @@
-package com.alma.departements;
+package com.alma.app;
 
 import java.sql.Connection;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,6 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.apache.log4j.Logger;
+
+
 
 public final class DBHandlerDpt {
 
@@ -76,13 +80,13 @@ public final class DBHandlerDpt {
   //exemple avec un produit
   //create
 	/**
-	 * Create a product and save it in the database
+	 * Creer une demande et la sauvegarde dans la base de donnée
 	 * @param name
 	 * @param description
 	 * @param price
 	 * @param id
 	 */
-	public void create(String name, String description, Float price, int id, int nbStock){
+	public void createDemande(String name, String description, Float price, int id, int nbStock){
 		try {
 			stmt = c.createStatement();
 			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');";
@@ -95,6 +99,41 @@ public final class DBHandlerDpt {
 	}
 
 
+	
+	/**
+	 * Create a product and save it in the database
+	 * @param name
+	 * @param description
+	 * @param price
+	 * @param id
+	 */
+	public void createIntervention(String name, String description, Float price, int id, int nbStock){
+		try {
+			stmt = c.createStatement();
+			String sql = "INSERT INTO PRODUCT (NAME,DESCRIPTION,PRICE,ID) "+"VALUES ('"+name+"', '"+description+"', "+price+", '"+id+"');";
+			stmt.executeUpdate(sql);
+			sql = "INSERT INTO STOCK (ID,NB_PROD) "+"VALUES ('"+id+"', '"+nbStock+"');";
+			stmt.executeUpdate(sql);
+		} catch ( Exception e ) {
+			logger.warn(e);
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
   //retrieve
 	/**
 	 * retrieve a product by ID
