@@ -1,4 +1,4 @@
-package com.alma.departements.persistancedpt;
+package com.alma.persistancedpt;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,21 +9,22 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 
-// class a modifier celon l'objet qu'on stock
+
 
 @Entity
-public class Instructor {
+public class Intervention {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    private String name;
-
-    public Instructor() {
+    private enum typedemande {Ext, Spe, normal};
+    
+    
+    
+    public Intervention() {
     }
 
-    public Instructor(final String name) {
+    public Intervention(final String name) {
         this.name = name;
     }
 
@@ -56,8 +57,8 @@ public class Instructor {
     @Override
     public boolean equals(final Object obj) {
 
-        if (obj instanceof Instructor) {
-            final Instructor other = (Instructor) obj;
+        if (obj instanceof Intervention) {
+            final Intervention other = (Intervention) obj;
             return new EqualsBuilder().append(name, other.name).append(id, other.id).isEquals();
         }
         return false;

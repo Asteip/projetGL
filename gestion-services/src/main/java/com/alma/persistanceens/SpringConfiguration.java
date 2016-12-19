@@ -1,4 +1,4 @@
-package com.alma.enseignants.persistanceens;
+package com.alma.persistanceens;
 
 import java.sql.SQLException;
 

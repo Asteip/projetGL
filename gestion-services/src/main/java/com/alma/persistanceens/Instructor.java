@@ -1,4 +1,4 @@
-package com.alma.enseignants.persistanceens;
+package com.alma.persistanceens;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

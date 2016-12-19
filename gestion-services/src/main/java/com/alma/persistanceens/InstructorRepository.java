@@ -1,4 +1,4 @@
-package com.alma.enseignants.persistanceens;
+package com.alma.persistanceens;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
