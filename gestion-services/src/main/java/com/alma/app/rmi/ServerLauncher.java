@@ -1,5 +1,4 @@
-
-package com.alma.spring.rmi;
+package com.alma.app.rmi;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

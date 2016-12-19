@@ -1,5 +1,5 @@
 
-package com.alma.spring.rmi;
+package com.alma.app.rmi;
 
 import java.util.ArrayList;
 import java.util.List;

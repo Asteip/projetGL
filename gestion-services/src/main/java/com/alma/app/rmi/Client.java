@@ -1,4 +1,4 @@
-package com.alma.spring.rmi;
+package com.alma.app.rmi;
 
 import java.util.List;
 
