@@ -7,7 +7,7 @@ public class Voeu extends Demande{
 	private int preference;
 	private Enseignement enseignement;
 	
-	public Voeu(int heures, Enseignant enseignant, int preference, Enseignement enseignement) {
+	public Voeu(int heures, Enseignant enseignant, int preference, Enseignement enseignement, int id) {
 		super(heures, enseignant, id);
 		this.preference = preference;
 		this.enseignement = enseignement;
