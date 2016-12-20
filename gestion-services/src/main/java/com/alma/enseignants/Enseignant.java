@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alma.departements.Departement;
 import com.alma.departements.Enseignement;
 import com.alma.departements.Module;
-import com.alma.departements.Service;
 
 public class Enseignant {
 
@@ -154,8 +153,8 @@ public class Enseignant {
 		return service;
 	}
 	
-	public Service setService(Service serv){
-		this.service = serv;
+	public void setService(Service service){
+		this.service = service;
 	}
 	
 

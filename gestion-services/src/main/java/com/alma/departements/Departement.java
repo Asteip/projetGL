@@ -44,15 +44,20 @@ public class Departement{
 		Enseignant e = demande.getEnseignant();
 		Service s = e.getService();
 		
+		int volume = 0;
+		
+		if (s.getAnnee() == Calendar.getInstance().get(Calendar.YEAR)){
+			volume = s.getVolume();
+		}
 		
 		if (demande instanceof Voeu) {
-			interv = new InterventionDep(demande.getHeures(), new Service(vol + demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)) , demande.getId());
+			interv = new InterventionDep(demande.getHeures(), new Service( (volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)) , demande.getId());
 		}
 		else if (demande instanceof DemandeSpeciale) {
-			interv = new CasSpecial(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			interv = new CasSpecial(demande.getHeures(), new Service((volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
 		}
 		else if (demande instanceof DemandeInterExt) {
-			interv = new InterventionExt(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			interv = new InterventionExt(demande.getHeures(), new Service(( volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
 		}
 		
 		valid.remove(demande);

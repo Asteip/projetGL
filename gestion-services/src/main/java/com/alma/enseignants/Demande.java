@@ -35,7 +35,7 @@ public abstract class Demande {
 		return this.enseignant;
 	}
 	
-	public long getId(){
+	public int getId(){
 		return this.id;
 	}
 	
