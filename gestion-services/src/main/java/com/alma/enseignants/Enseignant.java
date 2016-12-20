@@ -3,6 +3,9 @@ package com.alma.enseignants;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.alma.departements.Departement;
 import com.alma.departements.Enseignement;
 import com.alma.departements.Module;
@@ -17,6 +20,7 @@ public class Enseignant {
 	private Departement departement;
 	private Contrat contrat;
 	private int id;
+	private ApplicationContext context;
 
 	public Enseignant(String nom, String prenom, String status, Departement departement, Contrat contrat, int id){
 		this.nom = nom;
@@ -25,14 +29,15 @@ public class Enseignant {
 		this.departement = departement;
 		this.contrat = contrat;
 		this.id = id;
-
+		this.context = new ClassPathXmlApplicationContext("client-beans.xml");
+		departement = (Departement) context.getBean("DemandeBean");
+		
 		this.souhaits = new ArrayList<Demande>();
 		this.services = new ArrayList<Service>();
 	}
 
 	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite, int id){
 		Voeu v = new Voeu(volume, this, priorite, e, id);
-
 		//utiliser v 
 	}
 
@@ -82,6 +87,10 @@ public class Enseignant {
 		return e;
 	}
 
+	public void publier(Demande demande){
+		departement.ajouterDemande(demande);
+		demande.setPublie(true);
+	}
 
 	//--- getters and setters ---
 

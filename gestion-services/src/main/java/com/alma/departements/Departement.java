@@ -16,6 +16,10 @@ public class Departement{
 		this.enseignants = new ArrayList<Enseignant>();
 	}
 	
+	public void ajouterDemande(Demande demande){
+		
+	}
+	
 	public void consulterDemande(){
 		
 	}

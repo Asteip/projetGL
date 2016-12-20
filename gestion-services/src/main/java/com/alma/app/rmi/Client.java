@@ -21,6 +21,5 @@ public class Client {
 		for (Student each : accounts) {
 			System.out.println(each);
 		}
-
 	}
 }

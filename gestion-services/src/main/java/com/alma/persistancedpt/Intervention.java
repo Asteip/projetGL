@@ -20,8 +20,6 @@ public class Intervention {
     private enum typedemande {Ext, Spe, normal};
     private String name;
     
-    
-    
     public Intervention() {
     }
 
