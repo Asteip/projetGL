@@ -28,7 +28,17 @@ public abstract class Demande {
 	public int getId(){
 		return this.id;
 	}
+	
 	public void setPublie(boolean publie) {
 		this.publie = publie;
-	}	
+	}
+	
+	
+	
+	
+	
+	
+	
 } 
+
+

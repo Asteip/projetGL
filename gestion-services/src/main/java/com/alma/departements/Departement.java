@@ -32,15 +32,26 @@ public class Departement{
 	public void affecterDemande(Demande demande){
 		Intervention i;
 		
+		
+		// on créer une intervention correspondant aux differents souhaits (on garde l'id lors de la création
+		// pour montrer que l'intervention correspond à un souhait)
+		
 		if (demande instanceof Voeu) {
-			i = new InterventionDep(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)));
+			i = new InterventionDep(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
 		}
 		else if (demande instanceof DemandeSpeciale) {
-			i = new CasSpecial(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)));
+			i = new CasSpecial(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
 		}
 		else if (demande instanceof DemandeInterExt) {
-			i = new InterventionExt(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)));
+			i = new InterventionExt(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
 		}
+		
+		// retirer la demande de la liste des demande validée si elle y est
+		//
+		
+		
+		
+		
 	}
 	
 	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e){

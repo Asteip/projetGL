@@ -89,6 +89,10 @@ public class Enseignant {
 		departement.ajouterDemande(demande);
 		demande.setPublie(true);
 	}
+	
+	
+	
+	
 
 	//--- getters and setters ---
 
