@@ -1,6 +1,7 @@
 package com.alma.enseignants;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.context.ApplicationContext;
@@ -9,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alma.departements.Departement;
 import com.alma.departements.Enseignement;
 import com.alma.departements.Module;
+import com.alma.departements.Service;
 
 public class Enseignant {
 
@@ -35,6 +37,12 @@ public class Enseignant {
 		
 		this.souhaits = new ArrayList<Demande>();
 		this.services = new ArrayList<Service>();
+		
+		
+		
+		
+		
+		
 	}
 
 	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite, int id){
@@ -130,6 +138,8 @@ public class Enseignant {
 		return services;
 	}
 
+	
+	
 	public void setServices(List<Service> services) {
 		this.services = services;
 	}

@@ -1,5 +1,9 @@
 package com.alma.departements;
 
+import java.util.Calendar;
+
+
+
 public class Enseignement{
 	private int volumeHoraire;
 	private Module module;
@@ -15,6 +19,8 @@ public class Enseignement{
 		this.volumeHoraire = volumeHoraire;
 		this.module = module;
 		this.typeEnseignement = typeEnseignement;
+		
+		
 	}
 	
 	/**

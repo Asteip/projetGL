@@ -10,6 +10,9 @@ public class Service {
 	private List<Intervention> interventions;
 	
 	public Service(int volume, int annee){
+		
+		
+		
 		this.volume = volume;
 		this.annee = annee;
 		this.interventions = new ArrayList<Intervention>();
