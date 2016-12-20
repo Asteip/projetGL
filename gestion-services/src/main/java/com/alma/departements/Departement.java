@@ -10,6 +10,8 @@ public class Departement{
 	private String nom;
 	private ArrayList<Parcours> parcours;
 	private ArrayList<Enseignant> enseignants;
+	private ArrayList<Demande> nonValid;
+	private ArrayList<Demande> valid;
 	
 	public Departement(String nom){
 		this.nom = nom;
@@ -18,7 +20,7 @@ public class Departement{
 	}
 	
 	public void ajouterDemande(Demande demande){
-		
+		nonValid.add(demande);
 	}
 	
 	public void consulterDemande(){
@@ -26,7 +28,8 @@ public class Departement{
 	}
 	
 	public void validerDemande(Demande demande){
-		
+		nonValid.remove(demande);
+		valid.add(demande);
 	}
 	
 	public void affecterDemande(Demande demande){
@@ -98,4 +101,21 @@ public class Departement{
 	public void removeParcours(Parcours parcours){
 		this.parcours.remove(parcours);
 	}
+
+	public ArrayList<Demande> getNonValid() {
+		return nonValid;
+	}
+
+	public void setNonValid(ArrayList<Demande> nonValid) {
+		this.nonValid = nonValid;
+	}
+
+	public ArrayList<Demande> getValid() {
+		return valid;
+	}
+
+	public void setValid(ArrayList<Demande> valid) {
+		this.valid = valid;
+	}
+	
 }

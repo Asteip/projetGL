@@ -17,6 +17,7 @@ public class Enseignant {
 	private String status;
 	private List<Demande> souhaits;
 	private List<Service> services;
+	private List<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
 	private int id;
@@ -38,29 +39,27 @@ public class Enseignant {
 
 	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite){
 		Voeu v = new Voeu(volume, this, priorite, e);
+		souhaits.add(v);
 	}
 
 	public void creerDemandeExterieur(String demande, int volume){
 		DemandeInterExt d = new DemandeInterExt(volume, this, demande);
-		//utilise d
+		souhaits.add(d);
 	}
 
-	public void creerDemandeSpeciale(String type, int volume, int id){
+	public void creerDemandeSpeciale(String type, int volume){
 		DemandeSpeciale d = new DemandeSpeciale(volume, this, type);
-		//utiliser d
+		souhaits.add(d);
 	}
 
 	public List<Demande> consulterSouhait(boolean p){
 		List<Demande> d = new ArrayList<Demande>();
-		/*
-		 * Pour toutes les demandes {
-		 * if (demande.getPublie()){
-		 * 	d.add(demande);
-		 * }
-		 * }
-		 * return d;
-		 * 
-		 */
+		for (int i = 0; i < souhaits.size(); i++) {
+			Demande s = souhaits.get(i);
+			if(s.getPublie() == p){
+				d.add(s);
+			}
+		}
 		return d;
 	}
 	
@@ -154,4 +153,31 @@ public class Enseignant {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public List<Demande> getValider() {
+		return valider;
+	}
+
+	public void setValider(List<Demande> valider) {
+		this.valider = valider;
+	}
+	
+	public void addValider(List<Demande> v){
+		List<Demande> dem = new ArrayList<Demande>();
+		dem = departement.getValid();
+		Demande d;
+		for (int i = 0; i < souhaits.size(); i++) {
+			d = souhaits.get(i);
+			if(dem.contains(d)){
+				if(valider.contains(d)){
+					// no add necessary
+				}
+				else{
+					valider.add(d);
+				}
+			}
+		}
+	}
+	
+	
 }
