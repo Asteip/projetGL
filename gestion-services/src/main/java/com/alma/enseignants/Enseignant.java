@@ -18,7 +18,7 @@ public class Enseignant {
 	private String status;
 	private List<Demande> souhaits;
 	private List<Service> services;
-	private Service service;
+	private Service currentService;
 	private List<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
@@ -38,7 +38,7 @@ public class Enseignant {
 		this.souhaits = new ArrayList<Demande>();
 		this.services = new ArrayList<Service>();
 		
-		service = new Service( 0, Calendar.getInstance().get(Calendar.YEAR));
+		currentService = new Service( 0, Calendar.getInstance().get(Calendar.YEAR));
 		
 		
 		
@@ -149,12 +149,12 @@ public class Enseignant {
 		this.services = services;
 	}
 	
-	public Service getService(){
-		return service;
+	public Service getCurrentService(){
+		return currentService;
 	}
-	
-	public void setService(Service service){
-		this.service = service;
+
+	public void setCurrentService(Service serv){
+		this.currentService = serv;
 	}
 	
 
