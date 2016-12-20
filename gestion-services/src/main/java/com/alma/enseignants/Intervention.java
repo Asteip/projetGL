@@ -32,6 +32,12 @@ public abstract class Intervention {
 	public void setService(Service service) {
 		this.service = service;
 	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }
