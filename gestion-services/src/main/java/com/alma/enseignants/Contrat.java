@@ -1,7 +1,7 @@
 package com.alma.enseignants;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Contrat {
 	private int min;
