@@ -42,7 +42,7 @@ public class Departement{
 		
 
 		Enseignant e = demande.getEnseignant();
-		Service s = e.getService();
+		Service s = e.getCurrentService();
 		
 		
 		if (demande instanceof Voeu) {

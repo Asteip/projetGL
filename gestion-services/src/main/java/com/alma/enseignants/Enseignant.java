@@ -10,7 +10,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.alma.departements.Departement;
 import com.alma.departements.Enseignement;
 import com.alma.departements.Module;
-import com.alma.departements.Service;
 
 public class Enseignant {
 
@@ -19,7 +18,7 @@ public class Enseignant {
 	private String status;
 	private List<Demande> souhaits;
 	private List<Service> services;
-	private Service service;
+	private Service currentService;
 	private List<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
@@ -39,7 +38,7 @@ public class Enseignant {
 		this.souhaits = new ArrayList<Demande>();
 		this.services = new ArrayList<Service>();
 		
-		service = new Service( 0, Calendar.getInstance().get(Calendar.YEAR));
+		currentService = new Service( 0, Calendar.getInstance().get(Calendar.YEAR));
 		
 		
 		
@@ -150,12 +149,12 @@ public class Enseignant {
 		this.services = services;
 	}
 	
-	public Service getService(){
-		return service;
+	public Service getCurrentService(){
+		return currentService;
 	}
 	
-	public Service setService(Service serv){
-		this.service = serv;
+	public void setCurrentService(Service serv){
+		this.currentService = serv;
 	}
 	
 
