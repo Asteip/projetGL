@@ -1,7 +1,7 @@
 package com.alma.enseignants;
 public abstract class Demande {
 	
-	private int id;
+	protected int id;
 	private boolean publie;
 	private int heures;
 	private Enseignant enseignant;
