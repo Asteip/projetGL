@@ -4,6 +4,7 @@ import com.alma.enseignants.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Departement{
 	private String nom;
@@ -75,7 +76,7 @@ public class Departement{
 	}
 	
 	public ArrayList<Enseignement> getEnseignements(){
-		ArrayList<Enseignement> list = null;
+		ArrayList<Enseignement> list = new ArrayList<Enseignement>();
 		for(int i=0;i<this.parcours.size(); i++){
 			ArrayList<Module> mod = this.parcours.get(i).getModules();
 			for(int j=0;j<mod.size(); j++){
