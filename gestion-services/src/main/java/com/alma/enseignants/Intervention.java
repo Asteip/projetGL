@@ -10,6 +10,8 @@ public abstract class Intervention {
 		this.volume = volume;
 		this.service = service;
 		this.id = id;
+		//la création des interventions étant piloté par des demandes,
+		//l'id des demandes est retranscrit à l'id des interventions pour garder une trace.
 	}
 
 	

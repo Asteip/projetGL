@@ -38,9 +38,15 @@ public class Departement{
 		
 		// on créer une intervention correspondant aux differents souhaits (on garde l'id lors de la création
 		// pour montrer que l'intervention correspond à un souhait)
+		// de plus on creer un nouveau service si selui ci n'existe pas deja)
+		
+
+		Enseignant e = demande.getEnseignant();
+		Service s = e.getServices();
+		
 		
 		if (demande instanceof Voeu) {
-			interv = new InterventionDep(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			interv = new InterventionDep(demande.getHeures(), new Service(vol + demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)) , demande.getId());
 		}
 		else if (demande instanceof DemandeSpeciale) {
 			interv = new CasSpecial(demande.getHeures(), new Service(demande.getHeures(), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
@@ -51,10 +57,9 @@ public class Departement{
 		
 		valid.remove(demande);
 		affecter.add(demande);
+	
 		
-		//travail sur la classe service.
 		
-		interv.getHeures
 	}
 	
 	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e){

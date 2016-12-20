@@ -19,6 +19,7 @@ public class Enseignant {
 	private String status;
 	private List<Demande> souhaits;
 	private List<Service> services;
+	private Service service;
 	private List<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
@@ -38,8 +39,7 @@ public class Enseignant {
 		this.souhaits = new ArrayList<Demande>();
 		this.services = new ArrayList<Service>();
 		
-		
-		
+		service = new Service( 0, Calendar.getInstance().get(Calendar.YEAR));
 		
 		
 		
@@ -138,11 +138,18 @@ public class Enseignant {
 		return services;
 	}
 
-	
-	
 	public void setServices(List<Service> services) {
 		this.services = services;
 	}
+	
+	public Service getService(){
+		return service;
+	}
+	
+	public Service setService(Service serv){
+		this.service = serv;
+	}
+	
 
 	public Departement getDepartement() {
 		return departement;
