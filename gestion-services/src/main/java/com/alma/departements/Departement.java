@@ -73,7 +73,11 @@ public class Departement{
 			s.addIntervention(interv);
 		}
 		
-		valid.remove(demande);
+		if(valid.contains(demande))
+			valid.remove(demande);
+		else
+			nonValid.remove(demande);
+		
 		affecter.add(demande);
 		
 		

@@ -20,7 +20,6 @@ public class Enseignement{
 		this.module = module;
 		this.typeEnseignement = typeEnseignement;
 		
-		
 	}
 	
 	/**
