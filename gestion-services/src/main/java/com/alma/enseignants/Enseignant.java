@@ -73,15 +73,27 @@ public class Enseignant {
 	
 	public List<Demande> consulterSouhait(int annee){
 		List<Demande> d = new ArrayList<Demande>();
-		/*
-		 * Pour toutes les demandes {
-		 * if (demande.getAnnee() == annee){
-		 * 	d.add(demande);
-		 * }
-		 * }
-		 * return d;
-		 * 
-		 */
+		List<Integer> l = new ArrayList<Integer>();
+		
+		for (int i = 0; i < services.size(); i++) {
+			if (services.get(i).getAnnee() == annee) {
+				List<Intervention> inte = services.get(i).getInterventions() ;
+				for (int j = 0; j < inte.size(); j++) {
+					l.add(inte.get(j).getId());
+				}
+			}
+			else{
+				
+			}
+		}
+		for (int i = 0; i < l.size(); i++) {
+			for (int j = 0; j < souhaits.size(); j++) {
+				if(l.get(i) == souhaits.get(j).getId()){
+					d.add(souhaits.get(j));
+					j = souhaits.size(); //equivalent break
+				}
+			}
+		}
 		return d;
 	}
 
@@ -96,10 +108,6 @@ public class Enseignant {
 		demande.setPublie(true);
 	}
 	
-	
-	
-	
-
 	//--- getters and setters ---
 
 	public String getNom() {

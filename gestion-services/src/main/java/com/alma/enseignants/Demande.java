@@ -10,7 +10,7 @@ public abstract class Demande {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private int id;
 	
 	private boolean publie;
 	private int heures;
