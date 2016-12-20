@@ -59,22 +59,22 @@ public class Departement{
 		return this.nom;
 	}
 	
-	public void setParcours(ArrayList<Parcours> parcours){
+	public ArrayList<Parcours> getParcours() {
+		return parcours;
+	}
+
+	public void setParcours(ArrayList<Parcours> parcours) {
 		this.parcours = parcours;
 	}
-	
-	public ArrayList<Parcours> getParcours(){
-		return this.parcours;
+
+	public ArrayList<Enseignant> getEnseignants() {
+		return enseignants;
 	}
-	
-	public void setEnseignants(ArrayList<Parcours> parcours){
-		this.parcours = parcours;
+
+	public void setEnseignants(ArrayList<Enseignant> enseignants) {
+		this.enseignants = enseignants;
 	}
-	
-	public ArrayList<Parcours> getEnseignants(){
-		return this.parcours;
-	}
-	
+
 	public ArrayList<Enseignement> getEnseignements(){
 		ArrayList<Enseignement> list = new ArrayList<Enseignement>();
 		for(int i=0;i<this.parcours.size(); i++){
@@ -86,4 +86,16 @@ public class Departement{
 		return list;
 	}
 	
+	public void addEnseignant(Enseignant enseignant) {
+		this.enseignants.add(enseignant);
+	}
+	public void addParcours(Parcours p) {
+		this.parcours.add(p);
+	}
+	public void removeEnseignant(Enseignant enseignant){
+		this.enseignants.remove(enseignant);
+	}
+	public void removeParcours(Parcours parcours){
+		this.parcours.remove(parcours);
+	}
 }
