@@ -45,18 +45,18 @@ public class Enseignant {
 		
 	}
 
-	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite, int id){
-		Voeu v = new Voeu(volume, this, priorite, e, id);
+	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite){
+		Voeu v = new Voeu(volume, this, priorite, e);
 		souhaits.add(v);
 	}
 
-	public void creerDemandeExterieur(String demande, int volume, int id){
-		DemandeInterExt d = new DemandeInterExt(volume, this, demande, id);
+	public void creerDemandeExterieur(String demande, int volume){
+		DemandeInterExt d = new DemandeInterExt(volume, this, demande);
 		souhaits.add(d);
 	}
 
-	public void creerDemandeSpeciale(String type, int volume, int id){
-		DemandeSpeciale d = new DemandeSpeciale(volume, this, type, id);
+	public void creerDemandeSpeciale(String type, int volume){
+		DemandeSpeciale d = new DemandeSpeciale(volume, this, type);
 		souhaits.add(d);
 	}
 

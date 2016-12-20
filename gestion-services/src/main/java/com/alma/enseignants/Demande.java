@@ -1,18 +1,28 @@
 package com.alma.enseignants;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Demande {
 	
-	protected int id;
+	@Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
+	
 	private boolean publie;
 	private int heures;
 	private Enseignant enseignant;
 
-	public Demande(int heures, Enseignant enseignant, int id){
+	protected Demande() {}
+	
+	public Demande(int heures, Enseignant enseignant){
 		this.heures = heures;
 		this.enseignant = enseignant;
 		this.publie = false;
-		this.id = id;
 	}
-	
 	
 	//--- getters and setters ---
 	public boolean getPublie(){
@@ -25,7 +35,7 @@ public abstract class Demande {
 		return this.enseignant;
 	}
 	
-	public int getId(){
+	public long getId(){
 		return this.id;
 	}
 	
