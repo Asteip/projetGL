@@ -1,0 +1,229 @@
+%!TEX root = ./sujet-projet.tex
+
+\chapter{Architecture}
+
+\section{Introduction} 
+    
+    Ce chapitre fournit une description générale de l'architecture de notre système et décrit comment nous avons répondu aux exigences non-fonctionnelles énoncées précédemment dans la section~\ref{section:non-fonctionnelles}.
+
+\section{Vue physique} 
+
+    Le diagramme~\ref{dgm-deploiement} décrit l'architecture de l'application : les nœuds logiques, les protocoles de communication, le déploiement des artefacts logiciels (bibliothèques, autres logiciels, etc.).//
+    Il est composé de deux nœuds logiques : 
+
+    "Le chef du département" qui représente le département et "le client" qui représente un enseignant.//
+    Les artefacts "admin.jar" et "client.jar" représentent respectivements le logiciel déployé sur la machine du chef de département et le logiciel déployé sur la machine d'un enseignant.//
+    La persistence des données est gérée par les bibliothèques "spring.jar" et "ApacheDerby.jar". La communication entre les deux nœuds est gérée par le protocole RMI. Cette architecture répond aux exigences logicielles suivantes : 
+    \begin{itemize}
+        \item Publier des souhaits : modélisation de l'intéraction entre le client et le chef du département.
+        \item Consulter des enseignements : modélisation de l'intéraction entre le client et le chef du département.
+    \end{itemize}
+    
+    \begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=.6]{"architecture/AR-diagramme-deploiement"}
+    \caption{Diagramme de déploiement du système ``\projet{}''}
+    \label{dgm-deploiement}
+    \end{center}
+    \end{figure} 
+    
+    Le diagramme~\ref{dgm-deploiement-instance} présente des exemples de déploiement du système à travers des instances du diagramme de déploiement.
+    
+    \begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=.6]{"architecture/AR-diagramme-deploiement-inst"}
+    \caption{Diagramme d'instances modélisant un déploiement possible du système ``\projet{}''}
+    \label{dgm-deploiement-instance}
+    \end{center}
+    \end{figure} 
+
+\section{Vue du développement} 
+
+    Le diagramme~\ref{dgm-package} décrit l'organisation du code source. Celui-ci est découpé en trois paquetages principaux : "présentation" (interface utilisateur), "métier" (classes métiers) et "services" (persistence des données). Le paquetage "métier" comprend deux paquetages : "Departements" (classes métiers liées à un département) et "Enseignants" (classes métiers liées à des enseignants).
+    
+    \begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=.5]{"architecture/AR-diagramme-package"}
+    \caption{Diagramme de paquetage UML du système ``\projet{}''}
+    \label{dgm-package}
+    \end{center}
+    \end{figure} 
+    \newpage
+    
+\section{Vue logique} 
+
+    Diagramme de composant :
+    
+    
+    \begin{figure}[h!]
+    \begin{center}
+    \includegraphics[scale=.5]{"architecture/AR-diagramme-composant"}
+    \caption{Diagramme de composants UML du système ``\projet{}''}
+    \label{dgm-composant}
+    \end{center}
+    \end{figure} 
+
+
+    GUI E correspond au composant "Graphic User Interface" Enseignant. 
+    Ce composant utilise le composant Metier ENS et sert d'interface utilisateur aux enseignants, leurs permettant l'affichage d'informations et l'interaction avec l'application.\\
+    
+    GUI D correspond au composant "Graphic User Interface" Département.
+    Ce composant utilise le composant Metier DPT et sert d'interface utilisateur aux chefs de Departememnt.\\ Tout comme le GUI E, il permet l'affichage d'informations et l'interaction avec l'application.\\
+    
+    Le composant Metier Ens regroupe l'ensemble des fonctions et du processing des fonctions des enseignants. Ce composant utilise Persistance ENS et sert à son interface utilisateur. \\
+    Metier Ens est lié à Métier DPT, il utilise ce composant pour pouvoir accéder à des informations liées à la persistance DPT.\\
+        
+    Le composant Metier DPT regroupe l'ensemble des fonctions et du processing des fonctions Département. Ce composant utilise Persistance DPT et sert à son interface Utilisateur.\\
+    
+    Le composant Persistance ENS correspond à une base de données légère où sont sauvegardées les données issues des actions des enseignants de façon local.\\
+    
+    Le composant Persistance DPT correspond à une base de données légère où sont sauvegardées les données issues des actions des chefs de département.\\
+    Ces données sont sauvegardées sur le réseau et servent de base au système.\\
+    
+\section{Vue de la fiabilité} 
+
+    Les choix architecturaux faits pour assurer la fiabilité du système sont les suivants :
+    
+    \begin{enumerate}
+        \item L'application du chef de département est indisponible, l'enseignant ne peut donc pas publier ses souhaits. Solutions possibles :
+        \begin{enumerate}
+            \item Vérifier l'état du réseau.
+            \item Vérifier que l'application est bien connectée à l'application du chef de département (l'enseignant est reconnu par l'application du chef de département).
+            \item Le chef du département démarre (ou redémarre) son application. 
+            \item \textbf{Par défaut} l'application sauvegarde les données de publication de l'enseignant. Ce dernier pourra relancer l'opération plus tard.
+        \end{enumerate}
+        \item Echec lors de l'enregistrement des données côté client entrainant des incohérences. Solution possible :
+        \begin{enumerate}
+            \item L'enregistrement est annulé, l'utilisateur relance l'enregistrement.
+        \end{enumerate}
+        \item Echec lors de l'enregistrement des données côté admin entrainant des incohérences. Solution possible : 
+        \begin{enumerate}
+            \item L'enregistrement est annulé, l'utilisateur relance l'enregistrement.
+        \end{enumerate}
+    \end{enumerate}
+
+\section{Réponses aux exigences non-fonctionnelles}
+    Cette section présente nos solutions aux exgences non-fonctionnelles
+    Les sous-sections présentées ici ne constituent pas une liste exhaustive.
+
+    \subsection{Gestion de la concurrence}
+    Nous utilisons le framework java Spring. De ce fait, la gestion de la concurrence est gérée non pas par nous mais par ce framework.
+    
+    \subsection{Gestion de la persistance}
+    Toutes les données sont enregistrées dans des bases de données locales sur les différentes machines des utilisateurs. Il y a de plus, une base de données locale sur l'application serveur, sur laquelle les utilisateurs écriront grâce à la technologie RMI.
+    
+    \subsection{Gestion de la sécurité}
+    Système d'authentification : chaque machine disposera de ses identifiants uniques enregistrés localement. Ceux-ci seront transmis lors d'une demande afin de procéder à l'authentification. En effet, les différentes machines des enseignants seront connues des chefs de départements. Ainsi, lorsqu'une demande sera effectuée, les chefs pourront identifier la provenance de la requête et donc la valider ou non.
+    
+    L'authentification sera gérée par Spring.
+    
+
+\section{Architecture technique : traduction de UML en code source}
+    
+    Cette partie décrit l'ensemble des règles utilisées pour traduire les diagrammes \textsc{UML}.
+    
+    \subsection{Règles de traduction des types de base}
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Type & Traduction Java\\
+            \hline
+            Integer & int \\
+            Hour & int \\
+            String & String \\
+            Boolean & boolean\\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    
+    Nous avons choisis de changer le type Hour et d'utiliser un int.
+    Date n'est utilisé que pour les heures.
+    
+    \subsection{Règles de traduction des classes}
+    
+    Les "classes" correspondent à des classes.
+    Les "classes ayant plusieurs classes filles" sont considérées comme des classes abstraites.
+    
+        \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Classe & Classe Java\\
+            \hline
+            Classe & class \\
+            Classe abstraite & class abstraite \\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    
+    
+    \subsection{Règles de traduction des associations, agrégations composites et agrégations partagées}
+    
+    \begin{center}
+        \begin{tabular}{|c|c|}
+            \hline
+            Association & Traduction Java\\
+            \hline
+            Heritage & extends \\
+            Association & Reference<Objet> \\
+            Agrégation & Reference<Objet> \\
+            Composition & Reference<Objet>\\
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    \subsection{Règles de traduction des composants}
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+            \hline
+            Classe & Traduction en classe Java & Type\\
+            \hline
+            
+            Enseignant & Enseignant & Normal\\
+            
+            Contrat & Contrat & Normal\\
+            Service & Service & Normal\\
+            
+            Demande & Demande & Abstraite\\
+            Demande Spéciale & DemandeSpe & Fille\\
+            Demande Intervention Extérieur & DemandeInterExt & Fille\\
+            Voeu & Voeu & Fille\\
+            
+            Enseignement & Enseignement & Normal\\
+            
+            Departement & Departement & Normal\\
+            Parcours & Parcours & Normal\\
+            Module & Module & Normal\\
+            
+            Intervention & Intervention & Abstraite\\
+            Intervention au Departement & InterventionDep & Fille\\
+            Intervention Exterieur & InterventionExt & Fille\\
+            Cas Spécial & CasSpe & Fille\\
+            
+            TypeEnseignement & TypeEnseignement & Data\\
+
+            Hour & - & -\\
+            
+            \hline
+        \end{tabular}
+    \end{center}
+    
+    
+    \subsection{Autres règles}
+
+\section{Patrons architecturaux utilisés}
+
+    Cette partie présente une liste exhaustive des patrons de conception utilisés pour mettre en \oe uvre l'application.
+
+    \subsection{Client-server 3-tiers}
+    Le système est composé d'un serveur (chef de département) et de clients (enseignants). Chacune des entités disposent de trois niveaux : une interface (Présentation), des classes métiers (Métier) et une base de données (Service). Les couches métiers du client et du serveur communiquent entre elles via le réseau, ce qui permet aux enseignants d'accéder aux services proposés par le chef de département.
+    
+    
+
+\section{Conclusion} 
+    
+    Pour conclure, le système comportera une architecture de type Client-Serveur (3-tiers). Afin de répondre aux exigences non-fonctionelles, le framework java Spring sera essentiel. De plus, la technologie RMI permettra de procéder aux échanges de données. Quant à la fiabilité du système, trois cas ont été étudiés. Ces derniers se réfèrent principalement aux échecs d'échanges de données.
+    
+
+

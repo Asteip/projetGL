@@ -1,0 +1,406 @@
+%!TEX root = ./sujet-projet.tex
+
+\chapter{Spécification des composants}\label{chapter:composants}
+
+\section{Introduction}
+
+    Ce chapitre fournit une description générale des différents composants de notre système. Il permet d'établir les frontières du système ainsi que les interfaces de chaque composants.
+
+\section{Description des composants}
+    
+    Le système ne prendra pas en compte la gestion des conflits entre utilisateurs, la gestion de la base de données distante et la gestion d'authentification des utilisateurs. Le système est divisé en six composants : GUI ENS, GUI DPT, Metier ENS, Metier DPT, Persistance ENS et Persistance DPT.
+
+    \subsection{GUI ENS}
+        Le diagramme \ref{fig:comp-gui-ens} présente le composant "interface du chef de département". Il requiert l'interface "ActualiserInterfaceEns" pour afficher les informations.
+        \begin{figure}[h]
+        	\centering
+        	\includegraphics[scale=.6]{"spe_composant/composant/SP_diagramme_composant_GUI_ens"}
+        	\caption{Le composant GUI ENS et ses interfaces}
+        	\label{fig:comp-gui-ens}
+        \end{figure}
+    
+    \subsection{GUI DPT}
+        Le diagramme \ref{fig:comp-gui-dpt} présente le composant "interface d'un enseignant". Il requiert l'interface "ActualiserInterfaceDpt" pour afficher les informations.
+        \begin{figure}[h]
+        	\centering
+            \includegraphics[scale=.6]{"spe_composant/composant/SP_diagramme_composant_GUI_dpt"}
+        	\caption{Le composant GUI DPT et ses interfaces}
+        	\label{fig:comp-gui-dpt}
+        \end{figure}
+    \FloatBarrier
+    \subsection{Metier ENS}
+        Le diagramme \ref{fig:comp-metier-ens} présente le composant "métier" pour un enseignant, ainsi que les différentes classes métiers contenues dans ce diagramme. Le composant fournit l'interface "actualiserInterfaceEns" et requiert les interfaces "SauvegardeEns" et "Publication".
+        \begin{figure}[h]
+        	\centering
+        	\includegraphics[scale=.5]{"spe_composant/composant/SP_diagramme_composant_metier_ens"}
+        	\caption{Le composant Metier ENS et ses interfaces}
+        	\label{fig:comp-metier-ens}
+        \end{figure}
+    \FloatBarrier
+    \subsection{Metier DPT}
+        Le diagramme \ref{fig:comp-metier-dpt} présente le composant "métier" pour un département, ainsi que les différentes classes métiers contenues dans ce diagramme. Le composant fournit l'interface "actualiserInterfaceDpt" et "Publication" et requiert l'interface "SauvegardeDpt".
+        \begin{figure}[h]
+        	\centering
+        	\includegraphics[scale=.5]{"spe_composant/composant/SP_diagramme_composant_metier_dpt"}
+        	\caption{Le composant Metier DPT et ses interfaces}
+        	\label{fig:comp-metier-dpt}
+        \end{figure}
+   \FloatBarrier
+    \subsection{Persistance ENS}
+        Le diagramme \ref{fig:comp-persist-ens} présente le composant "persistance des données" pour un enseignant. Le composant fournit l'interface "sauvegardeEns" pour sauvegarder les données.
+        \begin{figure}[h]
+        	\centering
+        	\includegraphics[scale=.6]{"spe_composant/composant/SP_diagramme_composant_persistance_ens"}
+        	\caption{Le composant Persistance ENS et ses interfaces}
+        	\label{fig:comp-persist-ens}
+        \end{figure}
+    \FloatBarrier
+    \subsection{Persistance DPT}
+        Le diagramme \ref{fig:comp-persist-dpt} présente le composant "persistance des données" pour un département. Le composant fournit l'interface "sauvegardeDpt" pour sauvegarder les données.
+        \begin{figure}[h]
+        	\centering
+        	\includegraphics[scale=.6]{"spe_composant/composant/SP_diagramme_composant_persistance_dpt"}
+        	\caption{Le composant Persistance DPT et ses interfaces}
+        	\label{fig:comp-persist-dpt}
+        \end{figure}
+
+\FloatBarrier
+\section{Interactions}
+
+    Cette section décrit, à haut-niveau, la collaboration entre les composants majeurs, pendant la réalisation des cas d'utilisation. Les cas nominaux et extra-nominaux des cas d'utilisation sont décrit par les diagrammes de séquence disponibles ci-dessous.
+    
+    \subsection{UC1 : Affecter des enseignements}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC1/SP_diagramme_interaction_UC1_1}
+    	\caption{Interaction \--- Affectation d'un enseignement (cas nominal)}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC1/SP_diagramme_interaction_UC1_2}
+    	\caption{Interaction \--- Imposition d'un enseignement}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC1/SP_diagramme_interaction_UC1_3}
+    	\caption{Interaction \--- Affectation d'une demande extérieure ou d'une demande spéciale}
+    	\label{fig:label}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{UC2 : Valider des souhaits et publication des possibles conflits}
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC2/SP_diagramme_interaction_UC2_1}
+    	\caption{Interaction \--- Validation d'un souhait et publication des possibles conflits(cas nominal)}
+    	\label{fig:label}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{UC3 : Analyser des demandes}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC3/SP_diagramme_interaction_UC3_1}
+    	\caption{Interaction \--- Analyse d'une demande (cas nominal)}
+    	\label{fig:label}
+    \end{figure}
+
+    \FloatBarrier
+    \subsection{UC4 : \'Emettre un souhait}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_1}
+    	\caption{Interaction \--- Émission d'un souhait (cas nominal)}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_2}
+    	\caption{Interaction \--- Émission d'un souhait avec conflit}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_3}
+    	\caption{Interaction \--- Émission d'un souhait générant un surplus d'heures pour un enseignant}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_4}
+    	\caption{Interaction \--- Émission d'un souhait sans historique de souhait}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_5}
+    	\caption{Interaction \--- Émission d'une demande extérieure}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC4/SP_diagramme_interaction_UC4_6}
+    	\caption{Interaction \--- Émission d'une demande spéciale}
+    	\label{fig:label}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{UC5 : Publier des souhaits}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC5/SP_diagramme_interaction_UC5_1}
+    	\caption{Interaction \--- Publication d'un souhait (cas nominal)}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC5/SP_diagramme_interaction_UC5_2}
+    	\caption{Interaction \--- Cas où il n'y a pas de souhaits à publier}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC5/SP_diagramme_interaction_UC5_3}
+    	\caption{Interaction \--- Annulation de la demande de publication}
+    	\label{fig:label}
+    \end{figure}
+    
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC5/SP_diagramme_interaction_UC5_4}
+    	\caption{Interaction \--- Cas d'erreur lors de la publication d'un souhait}
+    	\label{fig:label}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{UC6 : Consulter des enseignements}
+
+    \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC6/SP_diagramme_interaction_UC6_1}
+    	\caption{Interaction \--- Consultation des enseignements disponibles}
+    	\label{fig:label}
+    \end{figure}
+
+     \begin{figure}[h]
+    	\centering
+    	\includegraphics[scale=.4]{spe_composant/UC6/SP_diagramme_interaction_UC6_2}
+    	\caption{Interaction \--- Consultation d'enseignements ne correspondant pas aux critères demandés}
+    	\label{fig:label}
+    \end{figure}
+\FloatBarrier
+\section{Spécification des interfaces}
+
+    Cette section présente les interfaces, elle décrit le comportement de chaque opération.
+
+	\subsection{Interface ActualiserInterfaceDpt}
+	
+    	\begin{itemize}
+    	    \item \code{consulterDemande()} \\
+    	    Renvoyer toutes les demandes publiées par les enseignants.
+    	    
+    	    \item \code{validerDemande(Departement, Demande)}\\
+    	    Valider une demande pour un département donné. La demande est associée à un enseignant et un enseignement, et contient un volume et une priorité. Cette validation n'est pas définitive, elle permet aux enseignants de visualiser l'état actuel des souhaits.
+    	    
+    	    \item \code{affecterEnseignements(Departement, Demande)}\\
+    	    Créer un objet "InterventionDepartement" à partir d'un v\oe{}u qui est ensuite stocké dans la base de données. L'objet "InterventionDepartement" correspond à une affectation pour un enseignant et un enseignement.
+    	    
+    	    \item \code{imposeInterventionDépartement(Departement, Enseignant, Enseignement)}\\
+    	    Créer un objet "InterventionDepartement" à partir d'un département, d'un enseignant et d'un enseignement. L'objet "interventionDepartement" correspond à une affectation pour un enseignant et un enseignement.
+    	    
+    	    \item \code{affecterDemandeExterieure(Departement, DemandeInterExt)}\\
+    	    Créer un objet "InterventionExterieure" à partir d'un département et d'un objet "DemandeExterieure".
+    	    
+    	    \item \code{affecterDemandeSpeciale(Departement, DemandeSpe)}\\
+    	    Créer un objet "InterventionSpeciale" à partir d'un département et d'un objet "DemandeSpeciale".
+    	    
+    	    \item \code{consulterAffectation(int, String)}\\
+    	    Renvoyer les interventions et les souhaits pour une année et pour un module donné.
+    	    
+    	    \item \code{modifierAffectation(Intervention)}\\
+    	    Modifier une affectation à partir d'un objet Intervention.	    
+    	    
+    	\end{itemize}
+	
+	\subsection{Interface ActualiserInterfaceEns}
+	    \begin{itemize}
+	        \item \code{consulterSouhait(int)}\\
+	        Méthode permettant de consulter ses souhaits à une année précise.
+	        
+	        \item \code{consulterSouhait(boolean) : List}\\
+    	    Consulter les "Demandes" en local créés par l'enseignant. Prend en paramètre un booléen définissant si la "Demande" est publiée ou non, au département.
+    	    
+    	    \item \code{getEnseignements() : List}
+    	    \item \code{getEnseignements(int, String) : List}
+    	    \item \code{getEnseignements(int, \dots) : List}\\
+    	    Méthodes retournant une liste d'enseignements. Il est possible de prendre en paramètres l'année, le domaine, la disponibilité\dots
+    	    
+    	    \item \code{creerDemandeSpeciale(Enseignant, String, int)}\\
+    	    Méthode permettant de créer une demande spéciale, prend en paramètre l'enseignant, la raison et la durée.
+    	    
+    	    \item \code{creerDemandeExterieure(Enseignant, String, int)}\\
+    	    Méthode permettant de créer une demande extérieure, prend en paramètre l'enseignant, le lieu et la durée.
+    	    
+    	    \item \code{creerVoeu(Enseignant , Module, Enseignement, int, int)}\\
+    	    Créer un voeu pour un module donné. Le voeu est associé à un enseignant et un enseignement avec un volume horaire et une priorité. Cette création est locale.
+
+    	\end{itemize}
+    	
+	\subsection{Interface Publication}
+	
+	    \begin{itemize}
+        	\item \code{getEnseignements() : List}
+        	\item \code{getEnseignements(int, \dots) : List}\\
+        	Méthode retournant une liste d'enseignements. Il est possible de passer en paramètres l'année, le domaine la disponibilité\dots
+        	
+        	\item \code{existeDemande(Demande) : boolean}\\
+        	Méthode retournant si oui ou non la demande passée en paramètre existe déjà.
+        	
+        	\item \code{envoyerSouhait(List<Demande>)}\\
+    	    Envoie les demandes créées par l'enseignant vers le département. Prend en paramètre la liste de demandes à envoyer.
+    	\end{itemize}
+	
+	\subsection{Interface SauvegardeEns}
+	    \begin{itemize}
+	        
+	        \item \code{emettreVoeu(Enseignant , Module, Enseignement, int, int)}\\
+	        Enregistre un voeu en local.
+	        
+	        \item \code{emettreDemandeExterieure(Enseignant, String, int)}\\
+	        Enregistre une demande extérieure en local.
+	        
+	        \item \code{emettreDemandeSpeciale(Enseignant, String, int)}\\
+	        Enregistre une demande spéciale en local.
+	        
+	        \item \code{getSouhait(int) : List}\\
+	        Méthode retournant une liste de souhaits correspondant à une année donnée.
+	        
+	        \item \code{getSouhait(boolean) : List}\\
+	        Consulte les souhaits en local créés par l'enseignant. Prend en paramètre un booléen définissant si la demande est oui ou non publiée au département. 
+	        
+	        \item \code{setPublie(List, boolean)}\\
+	        Pour tout souhait, change la valeur de "publie" par le booléen en paramètre.
+	        
+	    \end{itemize}
+		
+	\subsection{Interface SauvegardeDpt}
+	
+	    \begin{itemize}
+	        \item \code{getDemandes() : List}\\
+	        Renvoie la liste des demandes publiées par les enseignants.
+	        
+	        \item \code{saveIntervention(Intervention)}\\
+	        Sauvegarde une intervention correspondant à une affectation dans la base de données. 
+	        
+	        \item \code{rendPublic(Demande)}\\
+	        Rend publique les demandes publiées par les enseignants. Cette méthode est à appeler une fois les demandes validées par le chef de département.
+	        
+	        \item \code{getAffectation(int, Module) : Intervention}\\
+	        Renvoie une affectation selon une année et un module.
+	        
+	        \item \code{saveModification(Intervention)}\\
+	        Sauvegarde les modifications sur une intervention dans la base de données.
+	        
+	        \item \code{getEnseignements() : List<Enseignement>}
+	        \item \code{getEnseignements(int, String) : List}
+	        \item \code{getEnseignements(int, ...) : List}\\
+        	Méthode retournant une liste d'enseignements. Il est possible de passer en paramètres l'année, le domaine la disponibilité...
+	        
+	        \item \code{existeDemande(Demande)}\\
+	        Renvoie vrai si une demande identique (même enseignement et même module) a été publiée. Renvoie faux sinon.
+	  
+	    \end{itemize}	
+
+\section{Spécification des types utilisés}
+
+    Cette section spécifie les type utilisés par les interfaces (seulement ceux qui ne font pas partie des type de base "UML").  
+    
+    \subsection{Departement}
+    	La classe \code{Departement} représente un département. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[nom]: le nom du département. 
+    		\item[enseignants]: la liste des enseignants du département.  
+    		\item[parcours]: la liste des parcours du département.
+    	\end{description}
+        
+    \subsection{Enseignant}
+    	La classe \code{Enseignant} représente un enseignant. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[nom]: le nom de l'enseignant. 
+    		\item[prenom]: le prénom de l'enseignant.  
+    		\item[statut]: le statut de l'enseignant.
+    		\item[departement]: le département de l'enseignant. 
+    		\item[demandes]: la liste des demandes de l'enseignant. 
+    		\item[contrat]: le contrat de l'enseignant.
+    		\item[service]: la liste des services, c'est-à-dire des interventions de l'enseignant.
+    	\end{description}
+
+    \subsection{Enseignement}
+    	La classe \code{Enseignement} représente un enseignement. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[volume]: le nombre d'heures de l'enseignement. 
+    		\item[type]: le type de l'enseignement (TD, TP ou CM). 
+    		\item[module]: le module de l'enseignement. 
+    		\item[voeux]: la liste des v\oe{}ux liés à l'enseignement (TD, TP ou CM).
+    	\end{description}
+
+    \subsection{Module}
+    	La classe \code{Module} représente un Module d'enseignement. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[nom]: le nom du module. 
+    		\item[parcours]: le nom du parcours. 
+    		\item[enseignements]: la liste des enseignements de ce module.
+    	\end{description}
+
+    \subsection{Intervention}
+    	La classe \code{Intervention} représente une intervention effective. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[volume]: le volume d'heures de l'intervention. 
+    		\item[service]: le service lié à l'intervention.
+    	\end{description}
+
+    \subsection{Demande}
+    	La classe \code{Demande} représente une demande. Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[publie]: booléen pour savoir si la demande est publiée au département.
+    		\item[heures]: nombre d'heures associées à la demande. 
+    		\item[enseignant]: enseignant associé à la demande.
+    	\end{description}
+    	
+    \subsection{Voeu}
+    	La classe \code{Voeu} représente un voeu, elle hérite des propriétés de la classe "Demande". Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[preference]: entier qui sert a classer les voeux par ordre de préférence. 
+    		\item[enseignement]: enseignement sur lequel le voeu est basé.  
+    	\end{description}
+    	
+    \subsection{DemandeSpe}
+    	La classe \code{DemandeSpe} représente une demande spéciale, elle hérite des propriétés de la classe "Demande". Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[type]: chaîne de caractères qui explique la demande spéciale.
+    	\end{description}
+    	
+    \subsection{DemandeInterExt}
+    	La classe \code{DemandeInterExt} représente une demande d'intervention extérieure, elle hérite des propriétés de la classe "Demande". Elle possède les attributs suivants:
+    	\begin{description}
+    		\item[organisation]: l'organisation où se déroule l'intervention.  
+    	\end{description}
+
+\section{Conclusion}
+
+    Pour conclure, le système sera composé des composants suivants : "GUI Ens", "GUI Dpt", "Metier ENS", "Metier DPT", "Persistance ENS" et "Persistance DPT". Ces composants correspondent respectivement à l'interface de l'application, aux classes métier et à la couche persistance de l'application. Les composants liés à l'interface ne feront pas l'objet d'un développement. La couche persistance sera gérée par le "framework spring".

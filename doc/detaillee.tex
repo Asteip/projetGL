@@ -1,0 +1,58 @@
+%!TEX root = ./sujet-projet.tex
+
+\chapter{Conception détaillée}
+
+\section{Introduction}
+
+\section{Répertoire des décisions de conception}
+
+    Cette section contient l'ensemble de nos décisions de conception concernant le système.
+
+\section{Spécification détaillée des composants}
+
+    \subsection{Introduction}
+    Vous trouverez dans cette section le détail de deux composants : MetierEns et MetierDpt. En effet, les composants se référant à l'interface utilisateur ne sont pas explicités puisque non implémentés dans ce projet. Pour ce qui est des composants dit de persistance, ceux-ci sont gérés par un framework : Spring.
+
+    \newpage
+    \subsection{MetierEns}
+    
+    \subsubsection{Structure}  
+    
+    \begin{figure}[!htbp]
+    \begin{center}
+    \includegraphics[width=14cm]{"Detaillee/ClasseMetierEns"}
+    \caption{Diagramme de classes du composant MetierEns}
+    \label{classe-metierEns}
+    \end{center}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{MetierDpt}
+      
+    \subsubsection{Structure}
+    
+    \begin{figure}[!htbp]
+    \begin{center}
+    \includegraphics[width=14cm]{"Detaillee/ClasseMetierDpt"}
+    \caption{Diagramme de classes du composant MetierDpt}
+    \label{classe-metierDpt}
+    \end{center}
+    \end{figure}
+    
+    \FloatBarrier
+    \subsection{MetierEns \& MetierDpt --- Comportement}
+    
+     Les composants "MetierEns" et "MetierDpt" n'ont pas de comportement interne.
+     En effet ces composants ont des comportements externe les uns avec les autres : "MetierEns" utilise "MetierDpt" pour la réalisation de certaines actions et inversement. De plus "MetierEns" et "MetierDpt" ont besoin de communiquer avec leur base de données respective.
+
+\section{Spécification détaillée des classes}
+    
+    Les classes qui seront les plus difficiles à réaliser seront les classes départements et enseignants.
+    
+
+\section{Conclusion du Projet}
+    
+    Nous n'avons malheureusement pas pu mettre en place la totalité des fonctionnalités demandées. En effet, nous avons rencontré quelques difficultés quant à l'instauration d'une persistance en JPA. De plus, la communication RMI est mise en place mais nous ne sommes pas sûr que cela soit totalement fonctionnelle. Enfin, l'application a été développée dans un seul et même projet et non dans deux applications séparées (cf~\ref{dgm-deploiement} : admin.jar et client.jar). 
+    
+    Au cours de ce projet, nos connaissances sur les étapes de la conception logicielle se sont améliorées, nous avons passé beaucoup de temps à discuter de la mise en place de l'architecture, l'utilisation des designs patterns, notamment le pattern "command" ou encore "façade". Bien qu'il aurait fallu aérer les classes (parfois trop surchargées en méthodes), nous ne sommes pas parvenu à mettre en place une architecture plus poussée. Nous nous sommes aussi familiarisé avec l'utilisation de "Spring", "maven" ou encore "junit".
+  
