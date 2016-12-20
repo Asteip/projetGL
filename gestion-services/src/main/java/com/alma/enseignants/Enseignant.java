@@ -22,10 +22,11 @@ public class Enseignant {
 	private ArrayList<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
-	private int id;
+	private long id;
 	private ApplicationContext context;
+	
 
-	public Enseignant(String nom, String prenom, String status, Departement departement, Contrat contrat, int id){
+	public Enseignant(String nom, String prenom, String status, Departement departement, Contrat contrat, long id){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.status = status;
@@ -45,17 +46,20 @@ public class Enseignant {
 	}
 
 	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite){
-		Voeu v = new Voeu(volume, this, priorite, e);
+		long idvo = id + ((long)((Math.random() * 1000 )*0.00001));
+		Voeu v = new Voeu(volume, this, priorite, e, idvo);
 		souhaits.add(v);
 	}
 
 	public void creerDemandeExterieur(String demande, int volume){
-		DemandeInterExt d = new DemandeInterExt(volume, this, demande);
+		long idvo = id + ((long)((Math.random() * 1000 )*0.00001));
+		DemandeInterExt d = new DemandeInterExt(volume, this, demande, idvo);
 		souhaits.add(d);
 	}
 
 	public void creerDemandeSpeciale(String type, int volume){
-		DemandeSpeciale d = new DemandeSpeciale(volume, this, type);
+		long idvo = id + ((long)((Math.random() * 1000 )*0.00001));
+		DemandeSpeciale d = new DemandeSpeciale(volume, this, type, idvo);
 		souhaits.add(d);
 	}
 
@@ -174,11 +178,11 @@ public class Enseignant {
 		this.contrat = contrat;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

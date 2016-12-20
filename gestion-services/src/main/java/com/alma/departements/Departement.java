@@ -77,7 +77,6 @@ public class Departement{
 		affecter.add(demande);
 		
 		
-		
 	}
 	
 	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e, long id){
