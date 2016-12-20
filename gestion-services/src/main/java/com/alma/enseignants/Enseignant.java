@@ -16,9 +16,9 @@ public class Enseignant {
 	private List<Service> services;
 	private Departement departement;
 	private Contrat contrat;
-	private long id;
+	private int id;
 
-	public Enseignant(String nom, String prenom, String status, Departement departement, Contrat contrat, long id){
+	public Enseignant(String nom, String prenom, String status, Departement departement, Contrat contrat, int id){
 		this.nom = nom;
 		this.prenom = prenom;
 		this.status = status;
@@ -30,19 +30,19 @@ public class Enseignant {
 		this.services = new ArrayList<Service>();
 	}
 
-	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite){
-		Voeu v = new Voeu(volume, this, priorite, e);
+	public void creerVoeu(Module mod, Enseignement e, int volume, int priorite, int id){
+		Voeu v = new Voeu(volume, this, priorite, e, id);
 
 		//utiliser v 
 	}
 
-	public void creerDemandeExterieur(String demande, int volume){
-		DemandeInterExt d = new DemandeInterExt(volume, this, demande);
+	public void creerDemandeExterieur(String demande, int volume, int id){
+		DemandeInterExt d = new DemandeInterExt(volume, this, demande, id);
 		//utilise d
 	}
 
-	public void creerDemandeSpeciale(String type, int volume){
-		DemandeSpeciale d = new DemandeSpeciale(volume, this, type);
+	public void creerDemandeSpeciale(String type, int volume, int id){
+		DemandeSpeciale d = new DemandeSpeciale(volume, this, type, id);
 		//utiliser d
 	}
 
@@ -141,11 +141,11 @@ public class Enseignant {
 		this.contrat = contrat;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 }
