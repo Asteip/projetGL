@@ -4,6 +4,7 @@ import com.alma.enseignants.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Departement{
 	private String nom;
@@ -14,6 +15,10 @@ public class Departement{
 		this.nom = nom;
 		this.parcours = new ArrayList<Parcours>();
 		this.enseignants = new ArrayList<Enseignant>();
+	}
+	
+	public void ajouterDemande(Demande demande){
+		
 	}
 	
 	public void consulterDemande(){
@@ -54,21 +59,43 @@ public class Departement{
 		return this.nom;
 	}
 	
-	public void setParcours(ArrayList<Parcours> parcours){
+	public ArrayList<Parcours> getParcours() {
+		return parcours;
+	}
+
+	public void setParcours(ArrayList<Parcours> parcours) {
 		this.parcours = parcours;
 	}
-	
-	public ArrayList<Parcours> getParcours(){
-		return this.parcours;
+
+	public ArrayList<Enseignant> getEnseignants() {
+		return enseignants;
+	}
+
+	public void setEnseignants(ArrayList<Enseignant> enseignants) {
+		this.enseignants = enseignants;
+	}
+
+	public ArrayList<Enseignement> getEnseignements(){
+		ArrayList<Enseignement> list = new ArrayList<Enseignement>();
+		for(int i=0;i<this.parcours.size(); i++){
+			ArrayList<Module> mod = this.parcours.get(i).getModules();
+			for(int j=0;j<mod.size(); j++){
+				list.add(mod.get(j).getEnseignement());
+			}
+		}
+		return list;
 	}
 	
-	public void setEnseignants(ArrayList<Parcours> parcours){
-		this.parcours = parcours;
+	public void addEnseignant(Enseignant enseignant) {
+		this.enseignants.add(enseignant);
 	}
-	
-	public ArrayList<Parcours> getEnseignants(){
-		return this.parcours;
+	public void addParcours(Parcours p) {
+		this.parcours.add(p);
 	}
-	
-	
+	public void removeEnseignant(Enseignant enseignant){
+		this.enseignants.remove(enseignant);
+	}
+	public void removeParcours(Parcours parcours){
+		this.parcours.remove(parcours);
+	}
 }
