@@ -72,7 +72,7 @@ public class Enseignant {
 	
 	public List<Demande> consulterSouhait(int annee){
 		List<Demande> d = new ArrayList<Demande>();
-		List<Integer> l = new ArrayList<Integer>();
+		List<Long> l = new ArrayList<Long>();
 		
 		for (int i = 0; i < services.size(); i++) {
 			if (services.get(i).getAnnee() == annee) {

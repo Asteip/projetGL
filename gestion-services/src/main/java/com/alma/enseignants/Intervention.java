@@ -4,9 +4,9 @@ public abstract class Intervention {
 	
 	private int volume;
 	private Service service;
-	private int id;
+	private long id;
 	
-	public Intervention (int volume, Service service, int id){
+	public Intervention (int volume, Service service, long id){
 		this.volume = volume;
 		this.service = service;
 		this.id = id;
@@ -32,7 +32,7 @@ public abstract class Intervention {
 	public void setService(Service service) {
 		this.service = service;
 	}
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	public void setId(int id) {

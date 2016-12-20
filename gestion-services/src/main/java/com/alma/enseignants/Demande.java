@@ -10,7 +10,7 @@ public abstract class Demande {
 	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private long id;
 	
 	private boolean publie;
 	private int heures;
@@ -35,7 +35,7 @@ public abstract class Demande {
 		return this.enseignant;
 	}
 	
-	public int getId(){
+	public long getId(){
 		return this.id;
 	}
 	
