@@ -18,6 +18,7 @@ public class Intervention {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private enum typedemande {Ext, Spe, normal};
+    private String name;
     
     
     

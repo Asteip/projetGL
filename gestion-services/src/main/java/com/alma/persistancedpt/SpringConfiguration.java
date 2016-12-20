@@ -1,4 +1,4 @@
-package com.alma.departements.persistancedpt;
+package com.alma.persistancedpt;
 
 import java.sql.SQLException;
 
