@@ -23,7 +23,7 @@ public class InterventionDepTest extends TestCase{
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		inter = new InterventionDep(10,serv);
+		inter = new InterventionDep(10,serv,10);
 	}
 	protected void tearDown() throws Exception {
 		super.tearDown();
