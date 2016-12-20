@@ -74,5 +74,15 @@ public class Departement{
 		return this.parcours;
 	}
 	
+	public ArrayList<Enseignement> getEnseignements(){
+		ArrayList<Enseignement> list = null;
+		for(int i=0;i<this.parcours.size(); i++){
+			ArrayList<Module> mod = this.parcours.get(i).getModules();
+			for(int j=0;j<mod.size(); j++){
+				list.add(mod.get(j).getEnseignement());
+			}
+		}
+		return list;
+	}
 	
 }

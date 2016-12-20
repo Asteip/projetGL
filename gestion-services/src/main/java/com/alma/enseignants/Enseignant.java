@@ -81,9 +81,7 @@ public class Enseignant {
 
 	public List<Enseignement> getEnseignements(){
 		List<Enseignement> e = new ArrayList<Enseignement>();
-		/*
-		 * recherche tous les enseignements dans metier dpt
-		 */
+		e = departement.getEnseignements();
 		return e;
 	}
 
