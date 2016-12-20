@@ -1,14 +1,16 @@
 package com.alma.enseignants;
 public abstract class Demande {
-
+	
+	private int id;
 	private boolean publie;
 	private int heures;
 	private Enseignant enseignant;
 
-	public Demande(int heures, Enseignant enseignant){
+	public Demande(int heures, Enseignant enseignant, int id){
 		this.heures = heures;
 		this.enseignant = enseignant;
 		this.publie = false;
+		this.id = id;
 	}
 	
 	
@@ -22,4 +24,10 @@ public abstract class Demande {
 	public Enseignant getEnseignant() {
 		return this.enseignant;
 	}
+	
+	public int getId(){
+		return this.id;
+	}
+	
+	
 } 
