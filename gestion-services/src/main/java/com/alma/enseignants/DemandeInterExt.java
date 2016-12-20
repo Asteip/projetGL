@@ -4,8 +4,8 @@ public class DemandeInterExt extends Demande{
 
 	private String organisation;
 	
-	public DemandeInterExt(int heures, Enseignant enseignant, String organisation) {
-		super(heures, enseignant);
+	public DemandeInterExt(int heures, Enseignant enseignant, String organisation, long id) {
+		super(heures, enseignant, id);
 		this.organisation = organisation;
 	}
 

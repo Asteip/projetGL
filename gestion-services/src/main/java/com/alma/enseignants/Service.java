@@ -7,7 +7,7 @@ public class Service {
 	
 	private int volume;
 	private int annee;
-	private List<Intervention> interventions;
+	private ArrayList<Intervention> interventions;
 	
 	public Service(int volume, int annee){
 		
@@ -41,10 +41,10 @@ public class Service {
 		this.annee = annee;
 	}
 
-	public List<Intervention> getInterventions() {
+	public ArrayList<Intervention> getInterventions() {
 		return interventions;
 	}
-	public void setInterventions(List<Intervention> interventions) {
+	public void setInterventions(ArrayList<Intervention> interventions) {
 		this.interventions = interventions;
 	}
 	

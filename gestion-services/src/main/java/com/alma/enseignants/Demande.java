@@ -18,10 +18,11 @@ public abstract class Demande {
 
 	protected Demande() {}
 	
-	public Demande(int heures, Enseignant enseignant){
+	public Demande(int heures, Enseignant enseignant, long id){
 		this.heures = heures;
 		this.enseignant = enseignant;
 		this.publie = false;
+		this.id = id;
 	}
 	
 	//--- getters and setters ---
@@ -38,6 +39,9 @@ public abstract class Demande {
 	public long getId(){
 		return this.id;
 	}
+	
+	
+	
 	
 	public void setPublie(boolean publie) {
 		this.publie = publie;

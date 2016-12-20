@@ -16,10 +16,10 @@ public class Enseignant {
 	private String nom;
 	private String prenom;
 	private String status;
-	private List<Demande> souhaits;
-	private List<Service> services;
+	private ArrayList<Demande> souhaits;
+	private ArrayList<Service> services;
 	private Service currentService;
-	private List<Demande> valider;
+	private ArrayList<Demande> valider;
 	private Departement departement;
 	private Contrat contrat;
 	private int id;
@@ -59,8 +59,8 @@ public class Enseignant {
 		souhaits.add(d);
 	}
 
-	public List<Demande> consulterSouhait(boolean p){
-		List<Demande> d = new ArrayList<Demande>();
+	public ArrayList<Demande> consulterSouhait(boolean p){
+		ArrayList<Demande> d = new ArrayList<Demande>();
 		for (int i = 0; i < souhaits.size(); i++) {
 			Demande s = souhaits.get(i);
 			if(s.getPublie() == p){
@@ -70,13 +70,13 @@ public class Enseignant {
 		return d;
 	}
 	
-	public List<Demande> consulterSouhait(int annee){
-		List<Demande> d = new ArrayList<Demande>();
-		List<Long> l = new ArrayList<Long>();
+	public ArrayList<Demande> consulterSouhait(int annee){
+		ArrayList<Demande> d = new ArrayList<Demande>();
+		ArrayList<Long> l = new ArrayList<Long>();
 		
 		for (int i = 0; i < services.size(); i++) {
 			if (services.get(i).getAnnee() == annee) {
-				List<Intervention> inte = services.get(i).getInterventions() ;
+				ArrayList<Intervention> inte = services.get(i).getInterventions() ;
 				for (int j = 0; j < inte.size(); j++) {
 					l.add(inte.get(j).getId());
 				}
@@ -96,8 +96,8 @@ public class Enseignant {
 		return d;
 	}
 
-	public List<Enseignement> getEnseignements(){
-		List<Enseignement> e = new ArrayList<Enseignement>();
+	public ArrayList<Enseignement> getEnseignements(){
+		ArrayList<Enseignement> e = new ArrayList<Enseignement>();
 		e = departement.getEnseignements();
 		return e;
 	}
@@ -133,19 +133,19 @@ public class Enseignant {
 		this.status = status;
 	}
 
-	public List<Demande> getSouhaits() {
+	public ArrayList<Demande> getSouhaits() {
 		return souhaits;
 	}
 
-	public void setSouhaits(List<Demande> souhaits) {
+	public void setSouhaits(ArrayList<Demande> souhaits) {
 		this.souhaits = souhaits;
 	}
 
-	public List<Service> getServices() {
+	public ArrayList<Service> getServices() {
 		return services;
 	}
 
-	public void setServices(List<Service> services) {
+	public void setServices(ArrayList<Service> services) {
 		this.services = services;
 	}
 	
@@ -182,16 +182,16 @@ public class Enseignant {
 		this.id = id;
 	}
 
-	public List<Demande> getValider() {
+	public ArrayList<Demande> getValider() {
 		return valider;
 	}
 
-	public void setValider(List<Demande> valider) {
+	public void setValider(ArrayList<Demande> valider) {
 		this.valider = valider;
 	}
 	
-	public void addValider(List<Demande> v){
-		List<Demande> dem = new ArrayList<Demande>();
+	public void addValider(ArrayList<Demande> v){
+		ArrayList<Demande> dem = new ArrayList<Demande>();
 		dem = departement.getValid();
 		Demande d;
 		for (int i = 0; i < souhaits.size(); i++) {

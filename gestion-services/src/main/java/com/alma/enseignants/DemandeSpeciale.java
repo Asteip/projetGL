@@ -3,8 +3,8 @@ package com.alma.enseignants;
 public class DemandeSpeciale extends Demande {
 	private String type;
 	
-	public DemandeSpeciale(int heures, Enseignant enseignant, String type){
-		super(heures, enseignant);
+	public DemandeSpeciale(int heures, Enseignant enseignant, String type, long id){
+		super(heures, enseignant, id);
 		this.type = type;
 	}
 	

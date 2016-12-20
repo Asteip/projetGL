@@ -9,6 +9,7 @@ public class Departement{
 	private String nom;
 	private ArrayList<Parcours> parcours;
 	private ArrayList<Enseignant> enseignants;
+	private enum typeL{valid, nonValid, affecter};
 	
 	private ArrayList<Demande> nonValid;
 	private ArrayList<Demande> valid;
@@ -24,10 +25,19 @@ public class Departement{
 		nonValid.add(demande);
 	}
 	
-	public void consulterDemande(){
-		
+	
+	public ArrayList<Demande> consulterDemande(typeL t){
+		//affichage de la liste de demande
+		//par deffault si c'est pas spécifié il retourne la liste de demande non validé
+		switch (t) {
+		case valid :  return valid; 
+		case nonValid :   return nonValid;
+		case affecter :  return affecter;
+		default : return nonValid;
+		}
 	}
 	
+
 	public void validerDemande(Demande demande){
 		nonValid.remove(demande);
 		valid.add(demande);
@@ -51,24 +61,31 @@ public class Departement{
 		}
 		
 		if (demande instanceof Voeu) {
-			interv = new InterventionDep(demande.getHeures(), new Service( (volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)) , demande.getId());
+			interv = new InterventionDep(demande.getHeures(), new Service((volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)) , demande.getId());
+			s.addIntervention(interv);
 		}
 		else if (demande instanceof DemandeSpeciale) {
 			interv = new CasSpecial(demande.getHeures(), new Service((volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			s.addIntervention(interv);
 		}
 		else if (demande instanceof DemandeInterExt) {
-			interv = new InterventionExt(demande.getHeures(), new Service(( volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			interv = new InterventionExt(demande.getHeures(), new Service((volume + demande.getHeures()), Calendar.getInstance().get(Calendar.YEAR)), demande.getId());
+			s.addIntervention(interv);
 		}
 		
 		valid.remove(demande);
 		affecter.add(demande);
-	
+		
 		
 		
 	}
 	
-	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e){
+	public void ImposeInterventionDepartement(Enseignant ens, Enseignement e, long id){
 		
+		Voeu voeu = new Voeu(1, ens, 1, e, id);
+		affecterDemande(voeu);
+		
+	
 	}
 	
 		

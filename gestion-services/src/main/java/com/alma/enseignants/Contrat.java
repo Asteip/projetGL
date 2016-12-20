@@ -6,7 +6,7 @@ import java.util.List;
 public class Contrat {
 	private int min;
 	private int max;
-	private List<Enseignant> enseignants; //c'est chelou ca aussi
+	private ArrayList<Enseignant> enseignants; //
 	
 	public Contrat(int min, int max){
 		this.min = min;
@@ -36,10 +36,10 @@ public class Contrat {
 		this.max = max;
 	}
 
-	public List<Enseignant> getEnseignants() {
+	public ArrayList<Enseignant> getEnseignants() {
 		return enseignants;
 	}
-	public void setEnseignants(List<Enseignant> enseignants) {
+	public void setEnseignants(ArrayList<Enseignant> enseignants) {
 		this.enseignants = enseignants;
 	}
 	
